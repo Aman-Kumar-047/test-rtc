@@ -17,7 +17,7 @@ let options = {
   channel: "testing_rtc",
   // Pass a token if your project enables the App Certificate.
   token:
-    "006e32fdcfdb6794ce0a6396d810bcbade4IAC3bgTUXwl8W1nU8ubAhuZKMeBRsPO5Fd/mFBJ94okzYEjct68AAAAAEACJ4tGgrgWuYAEAAQBTBa5g",
+    "006e32fdcfdb6794ce0a6396d810bcbade4IAAXoegJYlOkImcmkRGBlW3vEXrg37JxKXOT+TZ7BBkMvEjct68AAAAAEABc42rkAFmvYAEAAQCkWK9g",
 };
 
 async function joinChannel() {
