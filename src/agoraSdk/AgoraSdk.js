@@ -5,6 +5,7 @@ import AgoraRTC from "agora-rtc-sdk-ng";
 let rtc = {
   // For the local client.
   client: null,
+  uid:null,
   // For the local audio track.
   localAudioTrack: null,
 };
@@ -19,8 +20,22 @@ let options = {
     "006e32fdcfdb6794ce0a6396d810bcbade4IAC3bgTUXwl8W1nU8ubAhuZKMeBRsPO5Fd/mFBJ94okzYEjct68AAAAAEACJ4tGgrgWuYAEAAQBTBa5g",
 };
 
+async function joinChannel() {
+  rtc.client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
+  // Automatically assign a number user ID.
+  rtc.uid = await client.join(options.appId,
+          options.channel,
+          options.token,
+          null);
+  console.log("client",rtc.client);
+  console.log("uid",rtc.uid);
+  console.log("state",rtc.client.connectionState);
+}
 
 
+async function leaveChannel() {
+  await client.leave();
+}
 // async function startBasicCall() {
 //     rtc.client =  AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
 //     const uid = await rtc.client.join(
@@ -34,7 +49,7 @@ let options = {
 //   rtc.localAudioTrack = await AgoraRTC.createMicrophoneAudioTrack();
 //   // Publish the local audio track to the channel.
 //   await rtc.client.publish([rtc.localAudioTrack]);
-  
+
 //   console.log("publish success!",rtc.localAudioTrack);
 
 //   rtc.client.on("user-published", async (user, mediaType) => {
@@ -42,7 +57,7 @@ let options = {
 //     await rtc.client.subscribe(user, mediaType);
 //     console.log("subscribe success",user);
 //     console.log("media",mediaType);
-  
+
 //     // If the subscribed track is audio.
 //     if (mediaType === "audio") {
 //       // Get `RemoteAudioTrack` in the `user` object.
@@ -63,10 +78,9 @@ let options = {
 // async function leaveCall() {
 //     // Destroy the local audio and track.
 //     rtc.localAudioTrack.close();
-  
+
 //     // Leave the channel.
 //     await rtc.client.leave();
 //   }
 
-
-// export {startBasicCall, leaveCall };
+export {joinChannel, leaveChannel };

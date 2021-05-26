@@ -1,13 +1,13 @@
 import './App.css';
 
-// import { startBasicCall, leaveCall} from './agoraSdk/AgoraSdk';
+import { joinChannel, leaveChannel} from './agoraSdk/AgoraSdk';
 
 function App() {
   return (
-    <div className="App">hiuhg
-      {/* <button onClick={joinChannel}>Join channel</button> */}
+    <div className="App">
+      <button onClick={joinChannel}>Join channel</button>
       {/* <button onClick={}>Start call</button> */}
-      {/* <button onClick={leaveCall}>End call</button> */}
+      <button onClick={leaveChannel}>End call</button>
     </div>
   );
 }
