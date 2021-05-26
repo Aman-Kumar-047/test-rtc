@@ -23,7 +23,7 @@ let options = {
 async function joinChannel() {
   rtc.client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
   // Automatically assign a number user ID.
-  rtc.uid = await client.join(options.appId,
+  rtc.uid = await rtc.client.join(options.appId,
           options.channel,
           options.token,
           null);
@@ -34,7 +34,7 @@ async function joinChannel() {
 
 
 async function leaveChannel() {
-  await client.leave();
+  await rtc.client.leave();
 }
 // async function startBasicCall() {
 //     rtc.client =  AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
