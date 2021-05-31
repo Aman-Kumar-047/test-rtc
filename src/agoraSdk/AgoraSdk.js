@@ -62,6 +62,20 @@ async function joinChannel() {
 
     if(rtc.client.remoteUsers){
       console.log("remoteUsers",rtc.client.remoteUsers);
+      rtc.client.remoteUsers.forEach(function(remoteUser, index) {
+        let remoteVideoTrack = remoteUser.videoTrack;
+        console.log("remoteVideoTrack of loop",remoteVideoTrack);
+        const remotePlayerContainer = document.createElement("div");
+        remotePlayerContainer.textContent = "Remote user in loop" + remoteUser.uid.toString();
+        remotePlayerContainer.style.width = "30%";
+        remotePlayerContainer.style.height = "28rem";
+        // let container = document.getElementById("container");
+        document.body.append(remotePlayerContainer);
+        remoteVideoTrack.play(remotePlayerContainer);
+
+        let remoteAudioTrack = remoteUser.audioTrack;
+        remoteAudioTrack.play();
+      });
     }
 
     if (mediaType === "video") {
