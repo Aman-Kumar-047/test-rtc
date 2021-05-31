@@ -24,9 +24,8 @@ let options = {
     "006e32fdcfdb6794ce0a6396d810bcbade4IAAsmZtXEIEhZw0k43bxoSiEXg1fXS5WU0ezU2ITscJBSUjct68AAAAAEADEZWnpsKi1YAEAAQBQqLVg",
 };
 
-async function joinChannel(exuser,exmediatype) {
-  console.log("exuser",exuser);
-  console.log("exmediatype",exmediatype);
+async function joinChannel() {
+
   rtc.client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
   // Automatically assign a number user ID.
   rtc.uid = await rtc.client.join(options.appId,
@@ -44,9 +43,11 @@ async function joinChannel(exuser,exmediatype) {
 
   const localPlayerContainer = document.createElement("div");
   localPlayerContainer.id = rtc.uid;
-  localPlayerContainer.style.width = "640px";
-  localPlayerContainer.style.height = "480px";
-  document.body.append(localPlayerContainer);
+  localPlayerContainer.style.width = "10%";
+  localPlayerContainer.style.height = "5rem";
+
+  let container = document.getElementById("container");
+  container.append(localPlayerContainer);
   
   rtc.localVideoTrack.play(localPlayerContainer);
   
@@ -61,9 +62,10 @@ async function joinChannel(exuser,exmediatype) {
         console.log("remoteVideoTrack",remoteVideoTrack);
         const remotePlayerContainer = document.createElement("div");
         remotePlayerContainer.textContent = "Remote user " + user.uid.toString();
-        remotePlayerContainer.style.width = "940px";
-        remotePlayerContainer.style.height = "680px";
-        document.body.append(remotePlayerContainer);
+        remotePlayerContainer.style.width = "50%";
+        remotePlayerContainer.style.height = "25rem";
+        let container = document.getElementById("container");
+        container.append(remotePlayerContainer);
         remoteVideoTrack.play(remotePlayerContainer);
     }
 
