@@ -9,7 +9,7 @@
   justify-content: center;
 }
 
-.container > div{
+.container  div:first-child{
   position: relative;
   height: fit-content;
     left: 49%;
@@ -34,7 +34,7 @@
   color: white;
   position: relative;
   height: fit-content;
-    left: 28%;
-    top: 22rem;
+    left: 38%;
+    top: 24rem;
     z-index: 10;
 }
