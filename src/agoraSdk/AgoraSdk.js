@@ -58,20 +58,20 @@ async function joinChannel() {
     console.log("subscribe success");
     console.log("mediaType",mediaType);
     if (mediaType === "video") {
-        const remoteVideoTrack = user.videoTrack;
-        console.log("remoteVideoTrack",remoteVideoTrack);
+        rtc.remoteVideoTrack = user.videoTrack;
+        console.log("remoteVideoTrack",rtc.remoteVideoTrack);
         const remotePlayerContainer = document.createElement("div");
         remotePlayerContainer.textContent = "Remote user " + user.uid.toString();
         remotePlayerContainer.style.width = "50%";
         remotePlayerContainer.style.height = "25rem";
         let container = document.getElementById("container");
         container.append(remotePlayerContainer);
-        remoteVideoTrack.play(remotePlayerContainer);
+        rtc.remoteVideoTrack.play(remotePlayerContainer);
     }
 
     if (mediaType === "audio") {
-        const remoteAudioTrack = user.audioTrack;
-        remoteAudioTrack.play();
+        rtc.remoteAudioTrack = user.audioTrack;
+        rtc.remoteAudioTrack.play();
     }
 
     rtc.client.on("user-unpublished", user => {
@@ -93,6 +93,8 @@ async function leaveChannel() {
   await rtc.client.leave();
   await rtc.localVideoTrack.setEnabled(false);
   await rtc.localAudioTrack.setEnabled(false);
+  await rtc.remoteVideoTrack.setEnabled(false);
+  await rtc.remoteAudioTrack.setEnabled(false);
   let myobj = document.getElementById(rtc.uid);
   myobj.remove();
   console.log("state",rtc.client.connectionState);
