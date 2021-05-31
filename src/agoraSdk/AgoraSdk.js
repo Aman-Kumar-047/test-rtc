@@ -18,7 +18,7 @@ let options = {
   channel: "testing_rtc",
   // Pass a token if your project enables the App Certificate.
   token:
-    "006e32fdcfdb6794ce0a6396d810bcbade4IAA27VLFYc2OJ5vf+f2rc8QkuQlSHTeIxtpf2qDcx5TGlEjct68AAAAAEAB+PjEWQMCxYAEAAQDjv7Fg",
+    "006e32fdcfdb6794ce0a6396d810bcbade4IAAsmZtXEIEhZw0k43bxoSiEXg1fXS5WU0ezU2ITscJBSUjct68AAAAAEADEZWnpsKi1YAEAAQBQqLVg",
 };
 
 async function joinChannel() {
@@ -56,7 +56,7 @@ async function joinChannel() {
         const remotePlayerContainer = document.createElement("div");
         remotePlayerContainer.textContent = "Remote user " + user.uid.toString();
         remotePlayerContainer.style.width = "940px";
-        remotePlayerContainer.style.height = "480px";
+        remotePlayerContainer.style.height = "680px";
         document.body.append(remotePlayerContainer);
         remoteVideoTrack.play(remotePlayerContainer);
     }
