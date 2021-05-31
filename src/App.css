@@ -9,9 +9,12 @@
   justify-content: center;
 }
 
-.container > div:first-child{
+.container > div{
   position: relative;
   height: fit-content;
+    left: 49%;
+    z-index: 20;
+    bottom: -21rem;
 }
 
 .joinButton {
