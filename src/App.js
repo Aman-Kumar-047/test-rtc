@@ -4,11 +4,11 @@ import './App.css';
 import { joinChannel, leaveChannel} from './agoraSdk/AgoraSdk';
 
 function App() {
-  const [isCallStarted, setIsCallStarted] = useState(false);
+  // const [isCallStarted, setIsCallStarted] = useState(false);
 
   return (
     <div className="App">
-      <div id="container" className="container">
+      {/* <div id="container" className="container">
       {isCallStarted === false ? 
       
       <button className={"joinButton"} onClick={() => {
@@ -22,7 +22,14 @@ function App() {
         leaveChannel();}}>End call</button>
 
       }
-      </div>
+      </div> */}
+            <button onClick={() => {
+        joinChannel()
+      }}>Talk to a Doctor 
+ </button>
+            
+      <button onClick={() => {
+        leaveChannel();}}>End call</button>
     </div>
   );
 }

@@ -53,6 +53,10 @@ async function joinChannel() {
   
   console.log("publish success!");
   
+  if(rtc.client.remoteUsers){
+    console.log("remoteUsers",rtc.client.remoteUsers);
+  }
+
   rtc.client.on("user-published", async (user, mediaType) => {
     await rtc.client.subscribe(user, mediaType);
     console.log("subscribe success");
@@ -79,9 +83,6 @@ async function joinChannel() {
         remotePlayerContainer.remove();
     });
 
-    rtc.client.on("user-joined", user => {
-      console.log("user joined",user);
-    });
 
 });
 
