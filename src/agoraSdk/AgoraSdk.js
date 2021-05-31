@@ -53,14 +53,17 @@ async function joinChannel() {
   
   console.log("publish success!");
   
-  if(rtc.client.remoteUsers){
-    console.log("remoteUsers",rtc.client.remoteUsers);
-  }
+
 
   rtc.client.on("user-published", async (user, mediaType) => {
     await rtc.client.subscribe(user, mediaType);
     console.log("subscribe success");
     console.log("mediaType",mediaType);
+
+    if(rtc.client.remoteUsers){
+      console.log("remoteUsers",rtc.client.remoteUsers);
+    }
+
     if (mediaType === "video") {
         rtc.remoteVideoTrack = user.videoTrack;
         console.log("remoteVideoTrack",rtc.remoteVideoTrack);
@@ -97,8 +100,8 @@ async function leaveChannel() {
   await rtc.remoteVideoTrack.setEnabled(false);
   await rtc.remoteAudioTrack.setEnabled(false);
   let myobj = document.getElementById(rtc.uid);
+  console.log("object to remove",myobj);
   myobj.remove();
-  console.log("state",rtc.client.connectionState);
 }
 
 
