@@ -9,13 +9,12 @@
   justify-content: center;
 }
 
-/* .container  :nth-child(2){
-  position: relative;
-  height: fit-content;
-    left: 49%;
-    z-index: 20;
-    bottom: -21rem;
-} */
+.container  :nth-child(2){
+  position: absolute;
+  z-index: 20;
+  bottom: 0%;
+  left: 65%;
+}
 
 .joinButton {
   margin-top: 2rem;
@@ -34,7 +33,7 @@
   color: white;
   position: relative;
   height: fit-content;
-    left: 38%;
+    left: 28%;
     top: 24rem;
     z-index: 10;
 }
