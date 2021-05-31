@@ -9,13 +9,13 @@
   justify-content: center;
 }
 
-.container  div:first-child{
+/* .container  :nth-child(2){
   position: relative;
   height: fit-content;
     left: 49%;
     z-index: 20;
     bottom: -21rem;
-}
+} */
 
 .joinButton {
   margin-top: 2rem;
