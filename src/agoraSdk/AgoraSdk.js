@@ -51,6 +51,11 @@ async function joinChannel() {
   console.log("publish success!");
   
   rtc.client.on("user-published", async (user, mediaType) => {
+    rtc.client.on("user-joined", async(user, mediaType) => {
+      console.log("peer user",user);
+      console.log("peer mediaType",mediaType);
+    });
+    
     await rtc.client.subscribe(user, mediaType);
     console.log("subscribe success");
     console.log("mediaType",mediaType);
@@ -75,10 +80,7 @@ async function joinChannel() {
         remotePlayerContainer.remove();
     });
 
-        rtc.client.on("user-joined", async(user, mediaType) => {
-      console.log("peer user",user);
-      console.log("peer mediaType",mediaType);
-    });
+
 
 });
 
