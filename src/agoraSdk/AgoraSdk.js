@@ -46,8 +46,8 @@ async function joinChannel() {
   localPlayerContainer.style.width = "10%";
   localPlayerContainer.style.height = "5rem";
 
-  let container = document.getElementById("container");
-  container.append(localPlayerContainer);
+  // let container = document.getElementById("container");
+  document.body.append(localPlayerContainer);
   
   rtc.localVideoTrack.play(localPlayerContainer);
   
@@ -68,8 +68,8 @@ async function joinChannel() {
         remotePlayerContainer.textContent = "Remote user " + user.uid.toString();
         remotePlayerContainer.style.width = "50%";
         remotePlayerContainer.style.height = "25rem";
-        let container = document.getElementById("container");
-        container.append(remotePlayerContainer);
+        // let container = document.getElementById("container");
+        document.body.append(remotePlayerContainer);
         rtc.remoteVideoTrack.play(remotePlayerContainer);
     }
 
