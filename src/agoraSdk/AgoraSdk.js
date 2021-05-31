@@ -24,7 +24,9 @@ let options = {
     "006e32fdcfdb6794ce0a6396d810bcbade4IAAsmZtXEIEhZw0k43bxoSiEXg1fXS5WU0ezU2ITscJBSUjct68AAAAAEADEZWnpsKi1YAEAAQBQqLVg",
 };
 
-async function joinChannel() {
+async function joinChannel(exuser,exmediatype) {
+  console.log("exuser",exuser);
+  console.log("exmediatype",exmediatype);
   rtc.client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
   // Automatically assign a number user ID.
   rtc.uid = await rtc.client.join(options.appId,
@@ -79,10 +81,7 @@ async function joinChannel() {
 
 });
 
-await rtc.client.subscribe(user, mediaType);
-console.log("subscribe success");
-console.log("mediaType",mediaType);
-console.log("user",user);
+
 }
 
 
