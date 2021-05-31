@@ -50,9 +50,10 @@ async function joinChannel() {
   rtc.client.on("user-published", async (user, mediaType) => {
     await rtc.client.subscribe(user, mediaType);
     console.log("subscribe success");
-
+    console.log("mediaType",mediaType);
     if (mediaType === "video") {
         const remoteVideoTrack = user.videoTrack;
+        console.log("remoteVideoTrack",remoteVideoTrack);
         const remotePlayerContainer = document.createElement("div");
         remotePlayerContainer.textContent = "Remote user " + user.uid.toString();
         remotePlayerContainer.style.width = "940px";
