@@ -9,6 +9,9 @@ let rtc = {
   // For the local audio track.
   localAudioTrack: null,
   localVideoTrack:null,
+  // For the remote audio video track
+  remoteAudioTrack: null,
+  remoteVideoTrack: null
 };
 
 let options = {
@@ -42,11 +45,11 @@ async function joinChannel() {
   localPlayerContainer.style.width = "640px";
   localPlayerContainer.style.height = "480px";
   document.body.append(localPlayerContainer);
-
+  
   rtc.localVideoTrack.play(localPlayerContainer);
-
+  
   console.log("publish success!");
-
+  
   rtc.client.on("user-published", async (user, mediaType) => {
     await rtc.client.subscribe(user, mediaType);
     console.log("subscribe success");
@@ -73,6 +76,11 @@ async function joinChannel() {
     });
 
 });
+
+rtc.client.on("peer-online", async(user, mediaType) => {
+  console.log("peer user",user);
+  console.log("peer mediaType",mediaType);
+});
 }
 
 
@@ -84,51 +92,6 @@ async function leaveChannel() {
   myobj.remove();
   console.log("state",rtc.client.connectionState);
 }
-// async function startBasicCall() {
-//     rtc.client =  AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
-//     const uid = await rtc.client.join(
-//       options.appId,
-//       options.channel,
-//       options.token,
-//       null
-//     );
-//   //console.log("uid", uid);
-//   //Create an audio track from the audio sampled by a microphone.
-//   rtc.localAudioTrack = await AgoraRTC.createMicrophoneAudioTrack();
-//   // Publish the local audio track to the channel.
-//   await rtc.client.publish([rtc.localAudioTrack]);
 
-//   console.log("publish success!",rtc.localAudioTrack);
-
-//   rtc.client.on("user-published", async (user, mediaType) => {
-//     // Subscribe to a remote user.
-//     await rtc.client.subscribe(user, mediaType);
-//     console.log("subscribe success",user);
-//     console.log("media",mediaType);
-
-//     // If the subscribed track is audio.
-//     if (mediaType === "audio") {
-//       // Get `RemoteAudioTrack` in the `user` object.
-//       const remoteAudioTrack = user.audioTrack;
-//       // Play the audio track. No need to pass any DOM element.
-//       remoteAudioTrack.play();
-//     }
-//   });
-
-//   rtc.client.on("user-unpublished", user => {
-//     // Get the dynamically created DIV container.
-//     const playerContainer = document.getElementById(user.uid);
-//     // Destroy the container.
-//     playerContainer.remove();
-//   });
-// }
-
-// async function leaveCall() {
-//     // Destroy the local audio and track.
-//     rtc.localAudioTrack.close();
-
-//     // Leave the channel.
-//     await rtc.client.leave();
-//   }
 
 export {joinChannel, leaveChannel };
