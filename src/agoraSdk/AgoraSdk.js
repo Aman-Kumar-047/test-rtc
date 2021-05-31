@@ -77,7 +77,9 @@ async function joinChannel(exuser,exmediatype) {
         remotePlayerContainer.remove();
     });
 
-
+    rtc.client.on("user-joined", user => {
+      console.log("user joined",user);
+    });
 
 });
 
